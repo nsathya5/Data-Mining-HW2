@@ -50,8 +50,9 @@ plt.title("Fine Tuned Decision Tree")
 plt.savefig("decision_tree.png", dpi=300)
 print("Decision tree plot saved as 'decision_tree.png'")
 
-#five fold cross-validation
+#five fold cross-validation for DT
 dt_scores = cross_val_score(best_dt, X, y, cv=5, scoring='accuracy')
+print(f"Decision Tree individual fold accuracies: {dt_scores}")
 print(f"Fine-Tuned Decision Tree 5-Fold CV Mean Accuracy: {dt_scores.mean():.4f}\n")
 
 #Defining a parameter grid
@@ -69,8 +70,9 @@ rf_grid_search.fit(X, y)
 best_rf = rf_grid_search.best_estimator_
 print(f"Best Random Forest Parameters: {rf_grid_search.best_params_}")
 
-#Applying cross-validation
+#Applying cross-validation for RF
 rf_scores = cross_val_score(best_rf, X, y, cv=5, scoring='accuracy')
+print(f"Random Forest individual fold accuracies: {rf_scores}")
 print(f"Fine-Tuned Random Forest 5-Fold CV Mean Accuracy: {rf_scores.mean():.4f}\n")
 
 #model accuracy comparision
@@ -83,3 +85,4 @@ if rf_scores.mean() > dt_scores.mean():
 else:
 
     print("Decision Tree is the better than Random Forest")
+
