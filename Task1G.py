@@ -31,7 +31,7 @@ y = titanic['Survived']
 #define a grid of parameters to search through
 param_grid_dt = {
     'criterion': ['gini', 'entropy'],
-    'max_depth': [3, 5, 7],
+    'max_depth': [3, 4, 5,6, 7],
     'min_samples_split': [2, 5, 10],
     'min_samples_leaf': [1, 2, 4]
 }
@@ -81,4 +81,5 @@ print(f"Random Forest: {rf_scores.mean():.4f}\n")
 if rf_scores.mean() > dt_scores.mean():
     print("Random Forest is the better than Decision Tree")
 else:
+
     print("Decision Tree is the better than Random Forest")
